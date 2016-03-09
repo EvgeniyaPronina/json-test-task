@@ -1,6 +1,28 @@
 <?php
 include_once 'functions.php';
 
+function removeLowTimeLowActivity($jsonInput)
+{
+    $fullData = json_decode( $jsonInput );
+
+    foreach ($fullData as $obj) {
+        $sorted_oc = sort_arr_of_obj($obj->occupations, 'time');
+        $start = 0;
+        $end = ident($sorted_oc, $start, 'time') + 1;
+        for ($m = 0; $m < $end; $m++) {
+            if ($sorted_oc[$m]->activityLevel < 2) {
+                unset($sorted_oc[$m]);
+            }
+        }
+        $obj->occupations = array_values($sorted_oc);
+    }
+
+    $output = array_values($fullData);
+    $jsonOutput = json_encode($output);
+
+    return($jsonOutput);
+}
+
 $jsonInput ='[
   {
     "_id":1364,"name":"Predator","occupations":[
@@ -35,25 +57,7 @@ $jsonInput ='[
   }
 ]';
 
-$fullData = json_decode( $jsonInput );
-
-foreach ($fullData as $obj) {
-    $sorted_oc = sort_arr_of_obj($obj->occupations, 'time');
-    $start = 0;
-    $end = ident($sorted_oc, $start, 'time') + 1;
-    for ($m = 0; $m < $end; $m++) {
-        if ($sorted_oc[$m]->activityLevel < 2) {
-            unset($sorted_oc[$m]);
-        }
-    }
-    $obj->occupations = array_values($sorted_oc);
-}
-
-$output = array_values($fullData);
-$jsonOutput = json_encode($output);
-
-print_r($jsonOutput);
-
+removeLowTimeLowActivity($jsonInput);
 
 
 
