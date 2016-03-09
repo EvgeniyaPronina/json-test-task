@@ -11,14 +11,14 @@ function removeLowScoredYYY($jsonInput)
         $pos_score = $n;
         $pos_start = $n;
         $pos_user = $n;
-        ident($fullData, $pos_user, 'user');//считаем до какого элемента (включительно) идут данные об одном пользователе
-        if (ident($fullData, $pos_score, 'score') >= $pos_user) {//проверяем на идентичность значения поля score у одного пользователя
+        ident($fullData, $pos_user, 'user');//СЃС‡РёС‚Р°РµРј РґРѕ РєР°РєРѕРіРѕ СЌР»РµРјРµРЅС‚Р° (РІРєР»СЋС‡РёС‚РµР»СЊРЅРѕ) РёРґСѓС‚ РґР°РЅРЅС‹Рµ РѕР± РѕРґРЅРѕРј РїРѕР»СЊР·РѕРІР°С‚РµР»Рµ
+        if (ident($fullData, $pos_score, 'score') >= $pos_user) {//РїСЂРѕРІРµСЂСЏРµРј РЅР° РёРґРµРЅС‚РёС‡РЅРѕСЃС‚СЊ Р·РЅР°С‡РµРЅРёСЏ РїРѕР»СЏ score Сѓ РѕРґРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
             $for_delete = $pos_start + 1;
             while ($for_delete <= $pos_user) {
                 unset($fullData[$for_delete]);
                 $for_delete++;
             }
-        } else {  //проверяем тип: 'YYY' или нет
+        } else {  //РїСЂРѕРІРµСЂСЏРµРј С‚РёРї: 'YYY' РёР»Рё РЅРµС‚
             $count_y = 0;
             $arr_y = array();
             for ($n = $pos_start; $n <= $pos_user; $n++) {
@@ -27,7 +27,7 @@ function removeLowScoredYYY($jsonInput)
                     $arr_y[$n] = $fullData[$n]->score;
                 }
             }
-            if ($count_y > 1) {     //ищем наименьш. счет типа 'yyy' в исходном массиве и удаляем его
+            if ($count_y > 1) {     //РёС‰РµРј РЅР°РёРјРµРЅСЊС€. СЃС‡РµС‚ С‚РёРїР° 'yyy' РІ РёСЃС…РѕРґРЅРѕРј РјР°СЃСЃРёРІРµ Рё СѓРґР°Р»СЏРµРј РµРіРѕ
                 asort($arr_y);
                 $keys = array_flip($arr_y);
                 $for_delete = array_shift($keys);

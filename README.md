@@ -37,7 +37,7 @@ Your solution should focus on: Speed, speed, speed! Resource consumption, code r
 
 Eliminate  Lowest Score for specific criteria (est. time 15 min): 
 
-(  Task was edited because it’s a lot of candidates and it’s start to be very hard to compare their results in one test. We look at code style and whole approach.  )
+(  Task was edited because itâ€™s a lot of candidates and itâ€™s start to be very hard to compare their results in one test. We look at code style and whole approach.  )
 
 A JSON string with over 100000 elements is passed to your function.
 The sting is already SORTED and will contain data as shown in the example below.
@@ -60,9 +60,9 @@ The sting is already SORTED and will contain data as shown in the example below.
 
 Write a function that would produce the following:
 
-Find and DELETE the lowest score for each of row of type ‘yyy’ for each user.
+Find and DELETE the lowest score for each of row of type â€˜yyyâ€™ for each user.
 - If All scores are Identical for a user. Keep only one result
-- If a user only have one score of type ‘yyy’, DO NOT DELETE score.
+- If a user only have one score of type â€˜yyyâ€™, DO NOT DELETE score.
 return a string formatted as above.
 
 Note: Feel free to write several versions of the code, we will keep the optimal result.
